@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Resume() {
   return (
     <div className="max-w-3xl mx-auto p-8 text-gray-900">
