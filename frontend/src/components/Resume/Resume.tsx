@@ -15,7 +15,7 @@ export default function Resume() {
           className="text-blue-600 hover:underline"
         >
           linkedin.com/in/willmcvay
-        </a>
+        </a> | <a href="/resume" className="text-blue-600 hover:underline">Download PDF Resume</a>
       </p>
 
       <section className="mb-8">
