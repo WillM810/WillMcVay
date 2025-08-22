@@ -10,7 +10,7 @@ app.get('/api', (req, res) => {
 });
 
 app.get('/resume', (req, res) => {
-  res.sendFile(path.join(__dirname, '../files', 'William McVay - Full Stack Developer.pdf'));
+  res.sendFile(path.join(__dirname, '../frontend/build/files', 'William McVay - Full Stack Developer.pdf'));
 });
 
 app.get(/.*/, (req, res) => {

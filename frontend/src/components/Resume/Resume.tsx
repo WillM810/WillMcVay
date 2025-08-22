@@ -1,3 +1,6 @@
+import Certifications from './Certifications/Certifications';
+import './Resume.css';
+
 export default function Resume() {
   return (
     <div className="max-w-3xl mx-auto p-8 text-gray-900">
@@ -15,13 +18,23 @@ export default function Resume() {
           className="text-blue-600 hover:underline"
         >
           linkedin.com/in/willmcvay
-        </a> | <a href="/resume" className="text-blue-600 hover:underline">Download PDF Resume</a>
+        </a>
+        {' | '}
+        <a
+          href="/resume"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:underline dl-link"
+        >
+          Download PDF Resume
+        </a>
+        <a href="https://www.willmcvay.com" className="text-blue-600 hover:underline pf-link">www.willmcvay.com</a>
       </p>
 
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-2">PROFESSIONAL SUMMARY</h2>
         <p>
-          Versatile and experienced Full Stack Developer with over 20 years of building scalable, secure, and user-centric web applications. Skilled in both front-end and back-end development across enterprise, government, and legal administration projects. Experienced in independently driving features from concept to deployment as well as collaborating in distributed remote teams. Strong problem solver with attention to detail, effective communication skills, and mentoring experience. Recently expanded expertise to include development and assessment of internal IT systems and automation solutions supporting legal case management workflows using Node.js and React.
+          Versatile and experienced Full Stack Developer with over 20 years of building scalable, secure, and user-centric web applications. Skilled in both front-end and back-end development across enterprise, government, and legal administration projects. Experienced in independently driving features from concept to deployment as well as collaborating in distributed remote teams. Strong problem solver with attention to detail, effective communication skills, and mentoring experience.
         </p>
       </section>
 
@@ -34,6 +47,8 @@ export default function Resume() {
         <p><strong>Cloud/DevOps:</strong> AWS (Lambda, EC2, S3), GCP, Heroku, NPM, Apache, Tomcat.</p>
         <p><strong>Testing:</strong> Jasmine, Jest, Integration & Unit Testing.</p>
       </section>
+
+      <Certifications />
 
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4">PROFESSIONAL EXPERIENCE</h2>
@@ -92,9 +107,12 @@ export default function Resume() {
         </div>
 
         <div className="mb-6">
-          <h3 className="font-bold">Professional Service Engineer – JackBe</h3>
-          <p className="italic mb-2">Chevy Chase, MD | 2008 – 2010</p>
+          <h3 className="font-bold">Professional Service Engineer – Vizible / JackBe</h3>
+          <p className="italic mb-2">Toronto, ON / Chevy Chase, MD | Jun 2007 – Aug 2010</p>
           <ul className="list-disc list-inside space-y-1">
+            <li>Developed 3D UIs using a proprietary JavaScript API for clients like AT&T and Showtime.</li>
+            <li>Integrated enterprise systems into immersive front-end interfaces for data visualization.</li>
+            <li>Delivered professional services both remotely and on-site.</li>
             <li>Created secure Java middleware and front-end UIs for DoD intelligence dashboards.</li>
             <li>Converted complex APIs to REST interfaces within highly secured environments.</li>
             <li>Worked on-site with DISA and ManTech under a now inactive Secret clearance.</li>
@@ -102,36 +120,13 @@ export default function Resume() {
         </div>
 
         <div className="mb-6">
-          <h3 className="font-bold">Professional Service Engineer – Vizible</h3>
-          <p className="italic mb-2">Toronto, ON | 2007 – 2008</p>
+          <h3 className="font-bold">Early Work Experience - Various Employers</h3>
+          <p className="italic mb-2">Newark, DE | Aug 2003 – May 2007</p>
           <ul className="list-disc list-inside space-y-1">
-            <li>Developed 3D UIs using a proprietary JavaScript API for clients like AT&T and Showtime.</li>
-            <li>Integrated enterprise systems into immersive front-end interfaces for data visualization.</li>
-            <li>Delivered professional services both remotely and on-site.</li>
-          </ul>
-        </div>
-
-        <div className="mb-6">
-          <h3 className="font-bold">Senior Developer – Application Development Group</h3>
-          <p className="italic mb-2">Newark, DE | Feb 2007 – May 2007</p>
-          <ul className="list-disc list-inside space-y-1">
-            <li>Designed and implemented a full-featured Java Monopoly clone.</li>
-          </ul>
-        </div>
-
-        <div className="mb-6">
-          <h3 className="font-bold">Tech Support Engineer – HostMySite.com</h3>
-          <p className="italic mb-2">Newark, DE | Apr 2006 – Aug 2006</p>
-          <ul className="list-disc list-inside space-y-1">
-            <li>Supported Tomcat and traditional web app hosting.</li>
-          </ul>
-        </div>
-
-        <div className="mb-6">
-          <h3 className="font-bold">Engineering Intern – EM Photonics</h3>
-          <p className="italic mb-2">Newark, DE | Dec 2004 – Feb 2005</p>
-          <ul className="list-disc list-inside space-y-1">
-            <li>Coded Java/C++ simulation tools for proprietary hardware.</li>
+            <li>Tech Support for dorm residents ensuring connectivity and functionality across platforms.</li>
+            <li>Internship coding Java/C++ simulation tools for proprietary hardware.</li>
+            <li>Tech Support for Tomcat, Ruby on Rails, PHP, and static web hosting.</li>
+            <li>Coordinated design and implementation of a full-featured Java Monopoly clone.</li>
           </ul>
         </div>
       </section>
@@ -142,11 +137,11 @@ export default function Resume() {
           <h3 className="font-bold">Lead Developer | Freelance / Personal Projects</h3>
           <p className="italic mb-2">Jan 2024 – Present</p>
           <ul className="list-disc list-inside space-y-1">
-            <li>Built 3D Chess game in Unity C#, including Node.js lobby server and internet multiplayer integration, plus a CLI for a standalone chess engine configured for StockFish integration.</li>
-            <li>Created a Node.js Discord bot integrated with social media/GraphQL and Google/MongoDB APIs, plus Delaware state legislature API integrations for bill tracking.</li>
+            <li>Built <a href="https://blog.willmcvay.com/2025/08/jrragon-chess.html" className="text-blue-600 hover:underline">3D Chess game</a> in Unity C#, including Node.js lobby server and internet multiplayer integration, plus a CLI for a standalone chess engine configured for StockFish integration.</li>
+            <li>Created a <a href="https://github.com/WillM810/npd-app" className="text-blue-600 hover:underline">Node.js Discord bot</a> integrated with <a href="https://github.com/WillM810/npd-bot" className="text-blue-600 hover:underline">social media/GraphQL and Google/MongoDB</a> APIs, plus Delaware state legislature API integrations for bill tracking.</li>
             <li>Designed custom CPU architecture with assembly language and developed applications to perform automated tasks and minimize tick count.</li>
             <li>Developed CI/CD pipelines deploying to Heroku and GCP with DNS setup.</li>
-            <li>Automated tasks using Python, Java, Lua, and C# across niche domains.</li>
+            <li>Automated tasks using Python, Java, Lua, and <a href="https://blog.willmcvay.com/2025/08/the-law-of-cosines.html" className="text-blue-600 hover:underline">C#</a> across niche domains.</li>
           </ul>
         </div>
       </section>

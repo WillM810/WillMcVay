@@ -1,0 +1,11 @@
+@media print {
+  .dl-link {
+    display: none;
+  }
+}
+
+@media screen {
+  .pf-link {
+    display: none;
+  }
+}

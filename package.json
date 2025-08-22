@@ -8,6 +8,7 @@
     "buildall": "tsc && cd frontend && npm run build",
     "start": "node dist/index.js",
     "dev": "nodemon",
+    "deploy": "powershell -ExecutionPolicy Bypass -File ./deploy.ps1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
