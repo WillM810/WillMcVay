@@ -1,4 +1,6 @@
 import Certifications from './Certifications/Certifications';
+import Education from './Education/Education';
+
 import './Resume.css';
 
 export default function Resume() {
@@ -146,21 +148,7 @@ export default function Resume() {
         </div>
       </section>
 
-      <section>
-        <h2 className="text-2xl font-semibold mb-2">EDUCATION</h2>
-        <div>
-          <h3 className="font-bold">University of Delaware</h3>
-          <p className="italic mb-2">Newark, DE | 2003 – 2007</p>
-          <p>BS in Computer Science, BA in Psychology, Minor in Political Science</p>
-          <p>Specialization in Intelligent Behavior</p>
-        </div>
-        <div className="mt-4">
-          <h3 className="font-bold">Delaware Technical Community College</h3>
-          <p className="italic mb-2">Dover, DE | 2017 – 2019</p>
-          <p>Paralegal Certificate</p>
-          <p>President, Student Paralegal Association | Member, ATK Honor Society</p>
-        </div>
-      </section>
+      <Education />
     </div>
   );
 }
