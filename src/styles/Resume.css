@@ -1,0 +1,20 @@
+@media print {
+  .dl-link {
+    display: none;
+  }
+
+  div.mb-2 {
+    page-break-inside: avoid;
+  }
+}
+
+@media screen {
+  .pf-link {
+    display: none;
+  }
+}
+
+.list-outside {
+  margin-left: 20px;
+  list-style-position: outside;
+}

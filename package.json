@@ -2,14 +2,25 @@
   "name": "willmcvay",
   "version": "0.0.1",
   "description": "My website.",
-  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "build": "tsc",
-    "buildall": "tsc && cd frontend && npm run build",
-    "start": "node dist/index.js",
     "dev": "nodemon",
-    "deploy": "powershell -ExecutionPolicy Bypass -File ./deploy.ps1",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf dist",
+    "build": "npm run clean && next build && tsc",
+    "start": "cross-env NODE_ENV=production node dist/server.js",
+    "deploy": "powershell -ExecutionPolicy Bypass -File ./deploy.ps1"
+  },
+  "nodemonConfig": {
+    "watch": [
+      "src"
+    ],
+    "ext": "ts,tsx,js,json",
+    "ignore": [
+      "node_modules",
+      "public"
+    ],
+    "exec": "npx tsx src/server.ts",
+    "signal": "SIGTERM"
   },
   "repository": {
     "type": "git",
@@ -22,13 +33,28 @@
   },
   "homepage": "https://github.com/WillM810/WillMcVay#readme",
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.17",
     "@types/express": "^5.0.3",
     "@types/node": "^24.2.0",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "autoprefixer": "^10.4.21",
+    "cpx": "^1.5.0",
     "nodemon": "^3.1.10",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.9.2"
+    "postcss": "^8.5.6",
+    "rimraf": "^6.1.0",
+    "tailwindcss": "^4.1.17",
+    "tsx": "^4.20.6"
   },
   "dependencies": {
-    "express": "^5.1.0"
+    "cross-env": "^10.1.0",
+    "express": "^5.1.0",
+    "next": "^16.0.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "typescript": "^5.9.3"
+  },
+  "engines": {
+    "node": ">=20.0.0"
   }
 }

@@ -1,35 +1,32 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
-    "rootDir": "./src",
-    "outDir": "./dist",
-
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "CommonJS",
-    "target": "ES2020",
+    "target": "es2020",
+    "module": "commonjs",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-
-    // Recommended Options
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
-    "jsx": "react-jsx",
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
     "skipLibCheck": true,
+    "outDir": "./dist",
+    "resolveJsonModule": true,
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "rootDir": "src",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "noEmit": false,
+    "incremental": false,
+    "isolatedModules": true
   },
-  "include": ["src/**/*"],
-  "exclude": ["dist", "node_modules"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "dist",
+    "node_modules"
+  ]
 }

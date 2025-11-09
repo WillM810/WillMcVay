@@ -21,7 +21,7 @@ export default function Education() {
   ];
 
   return (
-    <section>
+    <section className="mb-4">
       <h2 className="text-2xl font-semibold mb-2">EDUCATION</h2>
       {
         education.map(
@@ -29,7 +29,7 @@ export default function Education() {
             <div key={index} className="mt-4">
               <h3 className="font-bold">{edu.institution}</h3>
               <p className="italic mb-2">{`${edu.location} | ${edu.dates}`}</p>
-              <ul className="list-disc list-inside space-y-1">
+              <ul className="list-disc list-outside">
                 {
                   edu.data.map(
                     (item, idx) => (

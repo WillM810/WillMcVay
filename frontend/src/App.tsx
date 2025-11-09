@@ -1,9 +1,9 @@
 import './App.css';
-import Resume from './components/Resume/Resume';
+import AppRouter from '../../src/components/AppRouter';
 
 function App() {
   return (
-    <Resume />
+    <AppRouter />
   );
 }
 

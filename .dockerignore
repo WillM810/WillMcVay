@@ -1,0 +1,23 @@
+# Ignore local node_modules (builder will install fresh)
+node_modules
+
+# Ignore local build output
+dist
+.next
+
+# Git metadata
+.git
+.gitignore
+
+# Logs
+*.log
+npm-debug.log*
+
+# IDE / OS files
+.vscode
+.DS_Store
+Thumbs.db
+
+# Optional: temp files
+*.tmp
+*.swp
