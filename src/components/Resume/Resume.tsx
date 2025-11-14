@@ -30,7 +30,6 @@ export default function Resume() {
         </a>
         <a href="https://www.willmcvay.com" className="text-blue-600 hover:underline pf-link">www.willmcvay.com</a>
         <br />
-        GitHub: {' '}
         <a
           href="https://github.com/WillM810"
           target="_blank"
@@ -40,7 +39,6 @@ export default function Resume() {
           github.com/WillM810
         </a>
         { ' | '}
-        DevBlog: {' '}
         <a
           href="https://blog.willmcvay.com"
           target="_blank"
@@ -104,7 +102,7 @@ export default function Resume() {
           <p className="italic mb-2">Remote | Feb 2019 – Jan 2022</p>
           <ul className="list-disc list-outside">
             <li>Built full-stack Angular + Spring Boot application for DoD childcare registration.</li>
-            <li>Mentored 3-4 developers lead feature development from design to delivery.</li>
+            <li>Mentored 3-4 developers and led feature development from design to delivery.</li>
             <li>Ensured 95%+ test coverage integrating MSSQL procedures with Java and Angular layers.</li>
             <li>Delivered 4-10 completed user stories within biweekly sprints across distributed teams.</li>
           </ul>

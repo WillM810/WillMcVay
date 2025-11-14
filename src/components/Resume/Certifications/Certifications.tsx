@@ -1,9 +1,19 @@
 export default function Certifications() {
   const certificates = [
     {
+      name: 'HackerRank — Front End Developer (React) Certificate',
+      date: 'Nov 2025',
+      credentialId: '21dee0cf0091',
+    },
+    {
       name: 'HackerRank — Software Engineer Certificate',
       date: 'Aug 2025',
       credentialId: '245ab05db2c0',
+    },
+    {
+      name: 'HackerRank — React (Basic) Certificate',
+      date: 'Nov 2025',
+      credentialId: '9ca3d50122be',
     },
     {
       name: 'HackerRank — JavaScript (Basic) Certificate',
