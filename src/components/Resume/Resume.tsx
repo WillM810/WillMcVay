@@ -50,12 +50,13 @@ export default function Resume() {
       </p>
 
       <section className="mb-4">
-        <h2 className="text-2xl font-semibold mb-2">FULL STACK DEVELOPER &ndash; SUMMARY</h2>
+        <h2 className="text-2xl font-semibold mb-2">PROFESSIONAL SUMMARY | Full Stack Developer</h2>
         <ul className="list-disc list-outside mb-2">
-          <li>Versatile and experienced Full Stack Developer with over 20 years of proficiency building scalable, secure, and user-centric web applications from CI/CD DevOps to the front end.</li>
-          <li>Skilled in development across various industries in both the public and private sectors.</li>
-          <li>Accomplished in independently driving features from concept to deployment as well as collaborating with remote and on-site teams across timezone and cutural boundaries.</li>
-          <li>Strong problem solver with attention to detail, effective written and spoken communication skills with technical and non-technical audiences, and extensive mentoring experience.</li>
+          <li>20+ years of experience building scalable, secure, and user-centric web applications for the intel, health care, defense, education, and legal industries in public and private sector roles.</li>
+          <li>Proficient across full stack architecture from CI/CD DevOps and IaC through databases and back ends to front end design, implementation, responsive styling and SEO.</li>
+          <li>Proven success designing and deploying production systems on Heroku, AWS, and GCP with 99%+ uptime, rapid and reliable deployment, and low overhead costs.</li>
+          <li>Strong communicator and mentor reliable on remote Agile teams and independent project delivery consistently on schedule and delivering high quality, fully tested code.</li>
+          <li>Recent focus on modernizing internal IT processes in a legal setting through automated workflows integrating legacy application APIs to reduce time requirements and errors.</li>
         </ul>
       </section>
 
@@ -64,7 +65,7 @@ export default function Resume() {
         <p><strong>Languages:</strong> JavaScript/TypeScript, Java, Python, C#, PHP, SQL, Lua, Bash, IBM 3270.</p>
         <p><strong>Frameworks:</strong> React/Next.js, Angular, Node.js, Spring Boot, Django, .NET, jQuery.</p>
         <p><strong>Databases:</strong> PostgreSQL, MSSQL, MySQL, MongoDB/NoSQL.</p>
-        <p><strong>Tools:</strong> Git, Docker, Jenkins, GitHub/CoPilot, Jira, Slack, TFS, Teams, Discord, MS Office, Google Docs.</p>
+        <p><strong>Tools:</strong> Git, Docker, GitHub/CoPilot, Jira, TFS, Slack, Teams, Discord, Office, Google Apps.</p>
         <p><strong>DevOps:</strong> AWS (Lambda, EC2, S3), GCP, Heroku, GitHub Actions, Jenkins, NPM, Apache, Tomcat.</p>
         <p><strong>Testing:</strong> Jasmine, Jest, Integration & Unit Testing.</p>
       </section>

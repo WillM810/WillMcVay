@@ -1,57 +1,17 @@
 export default function Certifications() {
-  const certificates = [
-    {
-      name: 'HackerRank — Front End Developer (React) Certificate',
-      date: 'Nov 2025',
-      credentialId: '21dee0cf0091',
-    },
-    {
-      name: 'HackerRank — Software Engineer Certificate',
-      date: 'Aug 2025',
-      credentialId: '245ab05db2c0',
-    },
-    {
-      name: 'HackerRank — React (Basic) Certificate',
-      date: 'Nov 2025',
-      credentialId: '9ca3d50122be',
-    },
-    {
-      name: 'HackerRank — JavaScript (Basic) Certificate',
-      date: 'Aug 2025',
-      credentialId: 'ceaf57b75922',
-    },
-    {
-      name: 'HackerRank — JavaScript (Intermediate) Certificate',
-      date: 'Aug 2025',
-      credentialId: '11347597c1bf',
-    },
-  ];
-
-  const certBaseUrl = 'https://www.hackerrank.com/certificates/';
-
   return (
     <section className="mb-4">
-      <h2 className="text-2xl font-semibold mb-2">CERTIFICATIONS</h2>
-      <ul className="list-disc list-inside">
-        {
-          certificates.map(
-            (cert, index) => (
-              <li key={index}>
-                <span className="font-bold">{cert.name}: </span>
-                <a
-                  href={`${certBaseUrl}${cert.credentialId}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-blue-600 hover:underline font-bold"
-                >
-                  {cert.credentialId}
-                </a>
-                <span className="italic text-gray-600">&nbsp;({cert.date})</span>
-              </li>
-            )
-          )
-        }
-      </ul>
+      <h2 className="text-2xl font-semibold mb-2">
+        <a
+          href="https://www.hackerrank.com/profile/mcvay_will"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:underline"
+        >
+          HACKERRANK CERTIFICATIONS <em>(Aug &ndash; Nov, 2025)</em>
+        </a>
+      </h2>
+      JavaScript (Basic, Intermediate) ● React ● Software Engineer ● Frontend Developer
     </section>
   );
 }
