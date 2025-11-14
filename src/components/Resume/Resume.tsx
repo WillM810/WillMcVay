@@ -12,15 +12,6 @@ export default function Resume() {
         </a>
         <br />
         <a
-          href="https://linkedin.com/in/willmcvay"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline"
-        >
-          linkedin.com/in/willmcvay
-        </a>
-        {' | '}
-        <a
           href="/resume"
           target="_blank"
           rel="noopener noreferrer"
@@ -29,7 +20,16 @@ export default function Resume() {
           Download PDF Resume
         </a>
         <a href="https://www.willmcvay.com" className="text-blue-600 hover:underline pf-link">www.willmcvay.com</a>
-        <br />
+        { ' | ' }
+        <a
+          href="https://linkedin.com/in/willmcvay"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:underline"
+        >
+          linkedin.com/in/willmcvay
+        </a>
+        { ' | ' }
         <a
           href="https://github.com/WillM810"
           target="_blank"
@@ -38,7 +38,7 @@ export default function Resume() {
         >
           github.com/WillM810
         </a>
-        { ' | '}
+        { ' | ' }
         <a
           href="https://blog.willmcvay.com"
           target="_blank"
