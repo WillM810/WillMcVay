@@ -61,11 +61,11 @@ export default function Resume() {
 
       <section className="mb-4">
         <h2 className="text-2xl font-semibold mb-2">TECHNICAL SKILLS</h2>
-        <p><strong>Languages:</strong> JavaScript/TypeScript, Java, Python, C#, PHP, SQL, Lua, Bash.</p>
+        <p><strong>Languages:</strong> JavaScript/TypeScript, Java, Python, C#, PHP, SQL, Lua, Bash, IBM 3270.</p>
         <p><strong>Frameworks/Libraries:</strong> React/Next.js, Angular, Node.js, Spring Boot, Django, .NET, jQuery.</p>
         <p><strong>Databases:</strong> PostgreSQL, MSSQL, MySQL, MongoDB/NoSQL.</p>
-        <p><strong>Tools:</strong> Git, Docker, Jenkins, GitHub, Jira, Slack, TFS, Teams, Discord, MS Office, Google Docs.</p>
-        <p><strong>Cloud/DevOps:</strong> AWS (Lambda, EC2, S3), GCP, Heroku, GitHub, Jenkins, NPM, Apache, Tomcat.</p>
+        <p><strong>Tools:</strong> Git, Docker, Jenkins, GitHub/CoPilot, Jira, Slack, TFS, Teams, Discord, MS Office, Google Docs.</p>
+        <p><strong>DevOps:</strong> AWS (Lambda, EC2, S3), GCP, Heroku, GitHub Actions, Jenkins, NPM, Apache, Tomcat.</p>
         <p><strong>Testing:</strong> Jasmine, Jest, Integration & Unit Testing.</p>
       </section>
 
