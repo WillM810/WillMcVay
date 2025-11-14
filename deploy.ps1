@@ -1,13 +1,7 @@
 # Define image name
 $IMAGE = "gcr.io/coral-marker-245905/willmcvay:latest"
-$CACHE = "gcr.io/coral-marker-245905/willmcvay:cache"
 
-# Build with cache-from / cache-to
-docker buildx build `
-  --cache-from=type=registry,ref=$CACHE `
-  --cache-to=type=registry,ref=$CACHE,mode=max `
-  -t $IMAGE `
-  .
+docker build -t $IMAGE .
 
 # Push the image
 docker push $IMAGE
@@ -18,3 +12,4 @@ gcloud run deploy willmcvay `
   --platform managed `
   --region us-central1 `
   --allow-unauthenticated
+  

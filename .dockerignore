@@ -1,23 +1,45 @@
-# Ignore local node_modules (builder will install fresh)
+# Node modules & build dirs
 node_modules
-
-# Ignore local build output
+.pnpm-store
 dist
 .next
+build
+out
+
+# Environment files
+*.env
+.env.*
 
 # Git metadata
 .git
 .gitignore
+.gitattributes
 
 # Logs
 *.log
 npm-debug.log*
+pnpm-debug.log*
 
-# IDE / OS files
+# Editor/OS files
 .vscode
+.idea
 .DS_Store
 Thumbs.db
 
-# Optional: temp files
+# Tests
+coverage
+__tests__
+__mocks__
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+
+# Temp files
 *.tmp
+*.temp
 *.swp
+*.swo
+
+# Uploaded files
+public/uploads
