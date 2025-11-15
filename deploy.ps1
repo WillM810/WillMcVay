@@ -5,6 +5,10 @@ $startTime = Get-Date
 $IMAGE = "gcr.io/coral-marker-245905/willmcvay:latest"
 
 docker build -t $IMAGE .
+if ($LASTEXITCODE -ne 0) {
+    Write-Host "Docker build failed. Aborting deployment." -ForegroundColor Red
+    exit 1
+}
 
 # Push the image
 docker push $IMAGE
