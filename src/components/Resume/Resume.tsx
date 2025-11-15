@@ -52,7 +52,7 @@ export default function Resume() {
         <h2 className="text-2xl font-semibold mb-2">PROFESSIONAL SUMMARY | Full Stack Developer</h2>
         <ul className="list-disc list-outside mb-2">
           <li>20+ years of experience building scalable, secure, and user-centric web applications for the intel, healthcare, defense, education, and legal industries in public and private sector roles.</li>
-          <li>Proficient across full stack architecture from CI/CD DevOps and IaC through databases and back ends to front end design, implementation, responsive styling and SEO.</li>
+          <li>Proficient across full stack architecture from CI/CD DevOps and IaC through databases and back ends to front end design, implementation, responsive styling, and SEO.</li>
           <li>Proven success designing and deploying production systems on Heroku, AWS, and GCP with 99%+ uptime, rapid and reliable deployment, and low overhead costs.</li>
           <li>Strong communicator and mentor, reliable on remote Agile teams and independent project delivery consistently on schedule and delivering high quality, fully tested code.</li>
           <li>Recent focus on modernizing internal IT processes in a legal setting through automated workflows integrating legacy application APIs to reduce time requirements and errors.</li>
