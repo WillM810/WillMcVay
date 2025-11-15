@@ -1,5 +1,6 @@
+"use client";
+
 import { useState } from "react";
-import ToDo from "src/pages/todo";
 import ToDoItem from "./ToDoItem";
 
 export type ToDo = {
