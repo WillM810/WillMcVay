@@ -88,7 +88,7 @@ export default function Resume() {
 
         <div className="mb-2">
           <h3 className="font-bold">Legal Administrative Specialist – Office of Conflicts Counsel (OCC)</h3>
-          <p className="italic mb-2">Dover, DE | Aug 2025 – Present</p>
+          <p className="italic mb-2">Dover, DE | Aug 2025 – Present | Node, React</p>
           <ul className="list-disc list-outside">
             <li>99%+ reduction in labor and material costs achieved through task automation.</li>
             <li>Developed Node.js and React apps to coordinate existing case management software.</li>
