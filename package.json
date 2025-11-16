@@ -11,6 +11,7 @@
     "deploy": "powershell -ExecutionPolicy Bypass -File ./deploy.ps1"
   },
   "dependencies": {
+    "cheerio": "^1.1.2",
     "next": "16.0.3",
     "react": "19.2.0",
     "react-dom": "19.2.0"
