@@ -1,4 +1,4 @@
-import Education from './Education/Education';
+import Education from './Education';
 
 export default function Resume() {
   return (
