@@ -26,14 +26,14 @@ export async function POST(request: Request) {
     senator: {
       name: districtInfo[1].NAME,
       party: districtInfo[1].PARTY,
-      email: senInfo.email,
+      email: senInfo.email.toLocaleLowerCase(),
       photo: senInfo.imgSrc,
       url: districtInfo[1].URL,
     },
     representative: {
       name: districtInfo[2].NAME,
       party: districtInfo[2].PARTY,
-      email: repInfo.email,
+      email: repInfo.email.toLocaleLowerCase(),
       photo: repInfo.imgSrc,
       url: districtInfo[2].URL,
     },

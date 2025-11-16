@@ -57,18 +57,20 @@ export default function LegLookup() {
   }
 
   return (
-    <div className="p-10">
+    <div className="p-5 sm:p-10">
       <h1 className="font-bold text-2xl mb-2">Legislator Lookup</h1>
-      <TextInput
-        id="leg-lookup-address"
-        placeholder="Enter Your Delaware Address"
-        value={address}
-        onChange={(e) => setAddress(e.target.value)}
-        onEnter={lookupAddress}
-      />
-      <PrimaryButton onClick={lookupAddress} disabled={loading}>
-        Lookup
-      </PrimaryButton>
+      <div className="flex flex-nowrap justify-between">
+        <TextInput
+          id="leg-lookup-address"
+          placeholder="Enter Delaware Address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+          onEnter={lookupAddress}
+        />
+        <PrimaryButton onClick={lookupAddress} disabled={loading}>
+          Lookup
+        </PrimaryButton>
+      </div>
       {data && (
         <div className="mt-6 p-4 border border-gray-300 rounded-lg bg-gray-50">
           <h2 className="font-semibold text-lg">{data.address}, {data.county} County</h2>
@@ -76,8 +78,8 @@ export default function LegLookup() {
             { Math.abs(data.location.y).toFixed(2)+(data.location.y > 0 ? 'N' : 'S') },{ ' ' }
             { Math.abs(data.location.x).toFixed(2)+(data.location.x > 0 ? 'E' : 'W') }
           </div>
-          <div className="flex justify-between gap-4 mb-12">
-            <div id="sen" className="flex items-start gap-4 ml-20">
+          <div className="flex flex-wrap justify-between gap-4 mb-12">
+            <div id="sen" className="flex items-start gap-4 flex-1 min-w-[320px] max-w-[40%]">
               <img
                 src={data.senator.photo}
                 alt="Senator Photo"
@@ -85,7 +87,10 @@ export default function LegLookup() {
               />
 
               <div>
-                <h3 className="font-semibold">Senator: {data.senator.name} ({data.senator.party}-{data.sd})</h3>
+                <h3 className="font-semibold">
+                  Senator:{ ' ' }
+                  <span className="whitespace-nowrap">{data.senator.name} ({data.senator.party}-{data.sd})</span>
+                </h3>
                 <p>Email: {data.senator.email}</p>
                 <a
                   href={data.senator.url}
@@ -97,7 +102,7 @@ export default function LegLookup() {
                 </a>
               </div>
             </div>
-            <div id="rep" className="flex items-start gap-4 mr-20">
+            <div id="rep" className="flex items-start gap-4 flex-1 min-w-[320px] max-w-[40%]">
               <img
                 src={data.representative.photo}
                 alt="Representative Photo"
@@ -105,7 +110,10 @@ export default function LegLookup() {
               />
 
               <div>
-                <h3 className="font-semibold">Representative: {data.representative.name} ({data.representative.party}-{data.rd})</h3>
+                <h3 className="font-semibold">
+                  Representative:{ ' ' }
+                  <span className="whitespace-nowrap">{data.representative.name} ({data.representative.party}-{data.rd})</span>
+                </h3>
                 <p>Email: {data.representative.email}</p>
                 <a
                   href={data.representative.url}
@@ -118,10 +126,15 @@ export default function LegLookup() {
               </div>
             </div>
           </div>
-          <div className="mb-12 ml-20">
+          <div className="mb-12 px-5">
             <h3 className="font-semibold">County Officials</h3>
-            <p>{data.countyCouncil.title} {data.countyCouncil.name} <span className="italic">(District {data.cd})</span></p>
-            <p>{data.countyAtLarge.title} {data.countyAtLarge.name} <span className="italic">(At-Large)</span></p>
+            <p>
+              {data.countyCouncil.title}{ ' ' }
+              <span className="whitespace-nowrap">{data.countyCouncil.name} <span className="italic">(District {data.cd})</span></span>
+            </p>
+            <p>
+              {data.countyAtLarge.title}{ ' ' }
+              <span className="whitespace-nowrap">{data.countyAtLarge.name} <span className="italic">(At-Large)</span></span></p>
           </div>
           <MapEmbed lat={data.location.y} lon={data.location.x} />
         </div>
