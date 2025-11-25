@@ -47,3 +47,4 @@ EXPOSE 8080
 
 # Start Next.js using the CLI
 CMD ["node_modules/.bin/next", "start", "-p", "8080"]
+

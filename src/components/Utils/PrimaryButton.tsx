@@ -1,15 +1,15 @@
 type PrimaryButtonProps = {
-  onClick: () => void;
-  disabled?: boolean;
-  children: React.ReactNode;
+    onClick: () => void;
+    disabled?: boolean;
+    children: React.ReactNode;
 };
 
 export default function PrimaryButton(props: PrimaryButtonProps) {
-  return (
-    <button
-      onClick={props.onClick}
-      disabled={props.disabled}
-      className="
+    return (
+        <button
+            onClick={props.onClick}
+            disabled={props.disabled}
+            className="
         px-4
         py-2
         bg-blue-600
@@ -26,6 +26,8 @@ export default function PrimaryButton(props: PrimaryButtonProps) {
         disabled:text-gray-600
         transition-colors
       "
-    >{!props.disabled ? props.children : '...'}</button>
-  );
+        >
+            {!props.disabled ? props.children : "..."}
+        </button>
+    );
 }

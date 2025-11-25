@@ -1,1 +1,1 @@
-export { default } from './MapEmbed';
+export { default } from "./MapEmbed";

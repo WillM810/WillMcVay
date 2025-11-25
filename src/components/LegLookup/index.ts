@@ -1,1 +1,1 @@
-export { default } from './LegLookup';
+export { default } from "./LegLookup";
