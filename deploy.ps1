@@ -20,6 +20,8 @@ gcloud run deploy willmcvay `
   --region us-central1 `
   --allow-unauthenticated
 
+.\cleanup.ps1
+
 # Record end time
 $endTime = Get-Date
 
