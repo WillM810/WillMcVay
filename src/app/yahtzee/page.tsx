@@ -73,9 +73,12 @@ export default function YahtzeePage() {
 
     const [gameStarted, setGameStarted] = useState(false);
     const [activeTurn, setActiveTurn] = useState(-1);
+
     const [diceValues, setDiceValues] = useState([] as number[]);
     const [selectedDice, setSelectedDice] = useState(Array.from({ length: 5 }).fill(true) as boolean[]);
     const [remainingRolls, setRemainingRolls] = useState(3);
+
+    const [diceTimeout, setDiceTimeout] = useState(false);
 
     const playerNameRef = useRef<HTMLInputElement>(null);
 
@@ -121,44 +124,36 @@ export default function YahtzeePage() {
     }
 
     function rollDice() {
-        console.log(selectedDice);
         const newValues = Array.from({ length: 5 }) as number[];
         for (let i=0; i<5; i++) {
             if (selectedDice[i]) newValues[i] = Math.floor(6*Math.random()) + 1;
             else newValues[i] = diceValues[i];
         }
         setDiceValues(newValues);
-        console.log(newValues);
+        if (remainingRolls > 1) {
+            setDiceTimeout(true);
+            setTimeout(() => setDiceTimeout(false), 5000);
+        }
         setRemainingRolls(p => p - 1);
     }
 
     function diceButtonLabel() {
         if (!gameStarted) return 'Start Game';
-        if (activeScoreCard === activeTurn) return `Roll (${remainingRolls})`;
+        if (activeScoreCard === activeTurn) return `${diceTimeout ? '...' : ''}Roll (${remainingRolls})${diceTimeout ? '...' : ''}`;
         return 'Reload Score Card';
     }
 
     function isDiceDisabled() {
         if (!gameStarted) return !playerList.length;
-        return remainingRolls === 0;
+        return remainingRolls === 0 || diceTimeout;
     }
 
     function scoreDice(scoreIdx: number) {
         if (!diceValues.length) return 0;
         switch (scoreIdx) {
-            case 0:
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
+            case 0: case 1: case 2: case 3: case 4: case 5:
                 return diceValues.reduce((p, c) => c === (scoreIdx + 1) ? p + (scoreIdx + 1) : p, 0);
-            case 6:
-            case 7:
-            case 8:
-            case 16:
-            case 17:
-            case 18:
+            case 6: case 7: case 8: case 16: case 17: case 18:
                 return '';
             case 9:
                 return [1, 2, 3, 4, 5, 6].map(v => diceValues.reduce((p, c) => p += c === v ? 1 : 0, 0)).some(c => c >= 3) ? diceValues.reduce((p, c) => p + c, 0) : 0;
@@ -203,7 +198,7 @@ export default function YahtzeePage() {
 
     function updateTotals(player: Player) {
         player.scores[6] = player.scores.slice(0, 6).reduce((p, c) => p + (c || 0), 0);
-        if (player.scores[6] > 63) player.scores[7] = 35;
+        if (player.scores[6] >= 63) player.scores[7] = 35;
         else player.scores[7] = 0;
         player.scores[8] = player.scores[6] + player.scores[7];
         player.scores[17] = player.scores[8];
