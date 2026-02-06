@@ -132,7 +132,7 @@ export default function YahtzeePage() {
         setDiceValues(newValues);
         if (remainingRolls > 1) {
             setDiceTimeout(true);
-            setTimeout(() => setDiceTimeout(false), 5000);
+            setTimeout(() => setDiceTimeout(false), 1000);
         }
         setRemainingRolls(p => p - 1);
     }
