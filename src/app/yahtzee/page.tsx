@@ -247,6 +247,7 @@ export default function YahtzeePage() {
                                         primaryButtonClasses,
                                         'w-full'
                                     )}
+                                    disabled={addingPlayer && !editPlayerName.length}
                                     onClick={() => {
                                         if (!addingPlayer) setAddingPlayer(true); else addPlayer();
                                     }}
