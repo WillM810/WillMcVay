@@ -1,5 +1,6 @@
 "use client";
 
+import LockCheckBox from "@/components/Yatzhee/ui/LockCheckBox";
 import clsx from "clsx";
 import { useEffect, useRef, useState } from "react";
 
@@ -85,6 +86,7 @@ export default function YahtzeePage() {
     function addPlayer() {
         setActiveScoreCard(0);
         setPlayerList(list => [ ...list, { id: list.length, name: editPlayerName, scores: Array.from({ length: 19 }) as number[] } ]);
+        stopAddingPlayer();
     }
 
     useEffect(() => {
@@ -100,7 +102,6 @@ export default function YahtzeePage() {
         if (e.key === 'Enter') {
             addPlayer();
             e.preventDefault();
-            stopAddingPlayer();
         } else if (e.key === 'Escape') {
             stopAddingPlayer();
         }
@@ -112,7 +113,8 @@ export default function YahtzeePage() {
     }
 
     function diceButton() {
-        if (!gameStarted) startGame();
+        if (!gameStarted && !addingPlayer) startGame();
+        else if (addingPlayer) addPlayer();
         else if (activeTurn !== activeScoreCard) setActiveScoreCard(activeTurn);
         else rollDice();
     }
@@ -138,13 +140,15 @@ export default function YahtzeePage() {
     }
 
     function diceButtonLabel() {
-        if (!gameStarted) return 'Start Game';
+        if (!gameStarted && !addingPlayer) return 'Start Game';
+        if (addingPlayer) return 'Save Player';
         if (activeScoreCard === activeTurn) return `${diceTimeout ? '...' : ''}Roll (${remainingRolls})${diceTimeout ? '...' : ''}`;
         return 'Reload Score Card';
     }
 
     function isDiceDisabled() {
-        if (!gameStarted) return !playerList.length;
+        if (!gameStarted && !addingPlayer) return !playerList.length;
+        if (addingPlayer) return !editPlayerName.length;
         return remainingRolls === 0 || diceTimeout;
     }
 
@@ -236,7 +240,19 @@ export default function YahtzeePage() {
                                 onChange={(e) => setEditPlayerName(e.target.value)}
                                 onKeyDown={handleNameKey}
                             /> }
-                            { !gameStarted && <button className={clsx(buttonStyleClasses, primaryButtonClasses, 'w-full')} onClick={() => setAddingPlayer(true)}>Add Player</button> }
+                            { !gameStarted &&
+                                <button
+                                    className={clsx(
+                                        buttonStyleClasses,
+                                        primaryButtonClasses,
+                                        'w-full'
+                                    )}
+                                    onClick={() => {
+                                        if (!addingPlayer) setAddingPlayer(true); else addPlayer();
+                                    }}
+                                >
+                                    { addingPlayer ? 'Save Player' : 'Add Player' }
+                                </button> }
                         </div>
                         <div className="w-[70%] border p-8">
                             <div>{!gameStarted ? '' : playerList[activeScoreCard].name} Score Card</div>
@@ -264,17 +280,13 @@ export default function YahtzeePage() {
                             Array.from({ length: 9 }).map((_, i) => (i % 2) ? <div key={i}></div> :
                                 <div className="text-center" key={i}>
                                     <div
-                                        onClick={() => setSelectedDice(p => p.map((v, id) => id === i/2 ? !v : v))}
+                                        onClick={() => setSelectedDice(p => p.map((v, id) => id === i/2 && diceValues.length ? !v : v))}
                                         className="border rounded-2xl aspect-square items-center justify-center mb-2 grid grid-rows-3 grid-cols-3 p-3 align-text-top cursor-pointer"
                                     >
                                         { !diceValues.length ? '' :
                                             Array.from({ length: 9 }).map((_, j) => !!diceMap[diceValues[i/2]-1][j] ? <div key={j} className="text-2xl align-text-top pb-2">●</div> : <div key={j}></div>)}
                                     </div>
-                                    <input
-                                        checked={selectedDice[i/2]}
-                                        onChange={() => setSelectedDice(p => p.map((v, id) => id === i/2 ? !v : v))}
-                                        type="checkbox"
-                                    />
+                                    <LockCheckBox toggleIdx={i} isDisabled={!diceValues.length} setValue={setSelectedDice} value={selectedDice} />
                                 </div>
                             )
                         }
