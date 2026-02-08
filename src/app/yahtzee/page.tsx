@@ -135,6 +135,8 @@ export default function YahtzeePage() {
         if (remainingRolls > 1) {
             setDiceTimeout(true);
             setTimeout(() => setDiceTimeout(false), 1000);
+        } else {
+            setSelectedDice(Array.from({ length: 5 }).fill(false) as boolean[]);
         }
         setRemainingRolls(p => p - 1);
     }
@@ -149,7 +151,7 @@ export default function YahtzeePage() {
     function isDiceDisabled() {
         if (!gameStarted && !addingPlayer) return !playerList.length;
         if (addingPlayer) return !editPlayerName.length;
-        return remainingRolls === 0 || diceTimeout;
+        return remainingRolls === 0 || diceTimeout || !selectedDice.some(d => d);
     }
 
     function scoreDice(scoreIdx: number) {
@@ -281,7 +283,7 @@ export default function YahtzeePage() {
                             Array.from({ length: 9 }).map((_, i) => (i % 2) ? <div key={i}></div> :
                                 <div className="text-center" key={i}>
                                     <div
-                                        onClick={() => setSelectedDice(p => p.map((v, id) => id === i/2 && diceValues.length ? !v : v))}
+                                        onClick={() => setSelectedDice(p => p.map((v, id) => id === i/2 && diceValues.length && remainingRolls > 0 ? !v : v))}
                                         className="border rounded-2xl aspect-square items-center justify-center mb-2 grid grid-rows-3 grid-cols-3 p-3 align-text-top cursor-pointer"
                                     >
                                         { !diceValues.length ? '' :
