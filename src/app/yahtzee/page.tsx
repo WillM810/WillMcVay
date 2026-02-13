@@ -1,3 +1,10 @@
+
+// TODO
+// Yahtzee flair
+// Color locked dice
+// Bonus Mechanics
+
+
 "use client";
 
 import LockCheckBox from "@/components/Yatzhee/ui/LockCheckBox";
