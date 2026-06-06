@@ -81,6 +81,7 @@ export default function YahtzeePage() {
 
     const [gameStarted, setGameStarted] = useState(false);
     const [activeTurn, setActiveTurn] = useState(-1);
+    const [winner, setWinner] = useState(-1);
 
     const [diceValues, setDiceValues] = useState([] as number[]);
     const [selectedDice, setSelectedDice] = useState(Array.from({ length: 5 }).fill(true) as boolean[]);
@@ -151,6 +152,7 @@ export default function YahtzeePage() {
     function diceButtonLabel() {
         if (!gameStarted && !addingPlayer) return 'Start Game';
         if (addingPlayer) return 'Save Player';
+        if (winner >= 0) return `${playerList[winner].name} wins!`
         if (activeScoreCard === activeTurn) return `${diceTimeout ? '...' : ''}Roll (${remainingRolls})${diceTimeout ? '...' : ''}`;
         return 'Reload Score Card';
     }
@@ -158,7 +160,7 @@ export default function YahtzeePage() {
     function isDiceDisabled() {
         if (!gameStarted && !addingPlayer) return !playerList.length;
         if (addingPlayer) return !editPlayerName.length;
-        return remainingRolls === 0 || diceTimeout || !selectedDice.some(d => d);
+        return winner >= 0 || remainingRolls === 0 || diceTimeout || !selectedDice.some(d => d);
     }
 
     function scoreDice(scoreIdx: number) {
@@ -207,6 +209,13 @@ export default function YahtzeePage() {
         setRemainingRolls(3);
         setActiveTurn(p => (p + 1) % playerList.length);
         setActiveScoreCard(p => (p + 1) % playerList.length);
+        setWinner(
+            listUpdate.some(p =>
+                p.scores.some(s =>
+                    typeof s === "undefined"
+                )
+            ) ? -1 : listUpdate.reduce((p, c, i, a) => a[i].scores[18] > a[p].scores[18] ? i : p, 0)
+        );
     }
 
     function updateTotals(player: Player) {
