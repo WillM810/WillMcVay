@@ -1,6 +1,4 @@
 import * as cheerio from "cheerio";
-import { count } from "console";
-import { url } from "inspector";
 import { NextResponse } from "next/server";
 
 const GEO_URL = `https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates?f=json&SingleLine=`;
