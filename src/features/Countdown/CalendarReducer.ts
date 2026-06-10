@@ -1,16 +1,16 @@
 "use client";
 
-import { CalendarAction, CalendarState } from "./CalendarReducer.types";
+import { CalendarAction, CalendarState, NewCalendarDraft } from "./CalendarReducer.types";
 
 export const defaultCalendarFactory = () => ({
     id: crypto.randomUUID(),
     title: "Pfartz",
     viewDate: Date.now(),
-    targetDate: new Date(((Math.floor(Date.now()/86400000)+1)*86400000)+(new Date().getTimezoneOffset()*60000)).getTime(),
+    targetDate: undefined,
     holidays: [],
     countWeekends: false,
     countHolidays: false,
-}) as CalendarState;
+}) as NewCalendarDraft;
 
 export function calendarReducer(
     state: CalendarState,

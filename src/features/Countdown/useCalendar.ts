@@ -4,10 +4,11 @@ import { useMemo, useReducer, useRef } from "react"
 import { calendarReducer, defaultCalendarFactory } from "./CalendarReducer"
 import { initialUiState, uiReducerFactory } from "./UiReducer";
 import { CalendarInterface } from "@/components/Countdown/Countdown.types";
+import { CalendarState } from "./CalendarReducer.types";
 
 export function useCalendar() {
     const defaultCalendar = useMemo(() => defaultCalendarFactory(), []);
-    const [ calendarState, calendarDispatch ] = useReducer(calendarReducer, defaultCalendar);
+    const [ calendarState, calendarDispatch ] = useReducer(calendarReducer, defaultCalendar as CalendarState);
 
     const calendarStateRef = useRef(calendarState);
     calendarStateRef.current = calendarState;

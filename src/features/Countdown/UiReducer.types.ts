@@ -14,10 +14,11 @@ export type CalendarStateUI = {
 export type CalendarActionUI =
     | { type: "onPendingLabelChange", payload: string }
     | { type: "onDateSelect", payload: number }
-    | { type: "onDateAdjust", payload: [ number, number ] }
+    | { type: "onDateAdjust", payload: [ number, number ], commit: boolean }
     | { type: "isSchoolHolidayToggle" }
     | { type: "showHoliday", payload: string }
     | { type: "toggleEdit" }
     | { type: "toggleIcsUrl" }
     | { type: "onIcsUrlChange", payload: string }
-    | { type: "resetForm" };
+    | { type: "resetForm" }
+    | { type: "setTargetMode", payload: boolean };

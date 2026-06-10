@@ -1,4 +1,5 @@
 import { defaultCalendarFactory } from "./CalendarReducer";
+import { CalendarState } from "./CalendarReducer.types";
 import { CountdownStorageProvider } from "./CountdownStorageProvider";
 import { UserAction, UserState } from "./UserReducer.types";
 
@@ -17,11 +18,11 @@ export function userReducer(
             return action.state;
         }
         case "CREATE_CALENDAR": {
-            const newCalendar = defaultCalendarFactory()
+            const newCalendar = defaultCalendarFactory() as CalendarState;
             return {
                 ...state,
                 activeCalendarId: newCalendar.id,
-                calendars: [...state.calendars, newCalendar].sort((a, b) => a.targetDate - b.targetDate)
+                calendars: [...state.calendars, newCalendar]
             };
         }
         case "SET_ACTIVE_CALENDAR": {
@@ -33,6 +34,7 @@ export function userReducer(
         case "CLEAR_ACTIVE_CALENDAR": {
             return {
                 ...state,
+                calendars: state.calendars.filter(c => typeof(c.targetDate) !== "undefined"),
                 activeCalendarId: ""
             };
         }
@@ -52,7 +54,6 @@ export function userReducer(
             };
         }
         case "DELETE_ALL": {
-            if (!confirm("EVERYTHING!?")) return state;
             CountdownStorageProvider.clear();
             return { ...defaultUserState }
         }

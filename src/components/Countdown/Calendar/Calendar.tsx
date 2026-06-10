@@ -66,21 +66,36 @@ export function Calendar({ calendarInterface, countdownArray }: CalendarProps) {
         return range[0] && range[0].getTime() === date && calendarInterface.state.uiState.selectionIntent === "target";
     }
 
+    function isToday(date: number) {
+        return new Date(date).toLocaleDateString() === new Date().toLocaleDateString();
+    }
+
+    function adjMonth(dir: number) {
+        const current = new Date(calendarState.viewDate);
+        current.setMonth(current.getMonth() + dir)
+        return current.toLocaleDateString("en-us", { month: "long" });
+    }
+
     return (
         <div className={clsx("panel", styles.container)}>
-            <div className={styles.header}>
-                <div className={styles.navGroup}>
-                    <button onClick={() => calendarDispatch({ type: "STEP_VIEW_MONTH", payload: -12 })}>{"<<"}</button>
-                    <button onClick={() => calendarDispatch({ type: "STEP_VIEW_MONTH", payload: -1 })}>{"<"}</button>
+            <div className={clsx(styles.header, "flex")}>
+                <div className="flex justify-between items-center flex-1">
+                    <button className="btn btn-icon text-2xl" onClick={() => calendarDispatch({ type: "STEP_VIEW_MONTH", payload: -12 })}>⏮️</button>
+                    <span className="ml-4 mr-auto text-sm italic text-gray-400">{ new Date(calendarState.viewDate).getFullYear() - 1 }</span>
+                    <span className="ml-auto mr-4 text-sm italic text-gray-400">{ adjMonth(-1) }</span>
+                    <button className="btn btn-icon text-2xl" onClick={() => calendarDispatch({ type: "STEP_VIEW_MONTH", payload: -1 })}>◀️</button>
                 </div>
 
-                <div className={styles.monthDisplay}>
-                    <input type="month" value={populateViewDate()} onChange={setViewDate} />
+                <div className={clsx("panel", styles.monthDisplay)}>
+                    <button className="btn btn-ghost mr-4 border-gray-200" onClick={() => calendarDispatch({ type: "SET_VIEW_DATE", payload: Date.now() })}>🔄️ Today</button>
+                    <input className="input w-min" type="month" value={populateViewDate()} onChange={setViewDate} />
                 </div>
 
-                <div className={styles.navGroup}>
-                    <button onClick={() => calendarDispatch({ type: "STEP_VIEW_MONTH", payload: 1 })}>{">"}</button>
-                    <button onClick={() => calendarDispatch({ type: "STEP_VIEW_MONTH", payload: 12 })}>{">>"}</button>
+                <div className="flex justify-between items-center flex-1">
+                    <button className="btn btn-icon text-2xl" onClick={() => calendarDispatch({ type: "STEP_VIEW_MONTH", payload: 1 })}>▶️</button>
+                    <span className="ml-4 mr-auto text-sm italic text-gray-400">{ adjMonth(1) }</span>
+                    <span className="ml-auto mr-4 text-sm italic text-gray-400">{ new Date(calendarState.viewDate).getFullYear() + 1 }</span>
+                    <button className="btn btn-icon text-2xl" onClick={() => calendarDispatch({ type: "STEP_VIEW_MONTH", payload: 12 })}>⏭️</button>
                 </div>
             </div>
 
@@ -101,8 +116,11 @@ export function Calendar({ calendarInterface, countdownArray }: CalendarProps) {
                         className={
                             clsx(
                                 styles.cell,
-                                isInSelectedRange(c.date) ? styles.selectedCell : "",
-                                isSelectedTarget(c.date) ? styles.targetedCell : "",
+                                isSelectedTarget(c.date) ? "bg-green-100" :
+                                isInSelectedRange(c.date) ? "bg-cyan-100" :
+                                isToday(c.date) ? "bg-pink-100" :
+                                c.date < Date.now() ? "bg-gray-50" :
+                                "",
                             )
                         }
                         onClick={() => calendarInterface.dispatch.uiDispatch({ type: "onDateSelect", payload: c.date })}

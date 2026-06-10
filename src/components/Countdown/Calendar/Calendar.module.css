@@ -6,24 +6,10 @@
 }
 
 .header {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
+    gap: 32px;
     align-items: center;
-    padding: 8px;
+    padding: 2px 2px 8px 0px;
     border-bottom: 1px solid #ccc;
-}
-
-.navGroup {
-    display: flex;
-    gap: 6px;
-}
-
-.navGroup:first-child {
-    justify-content: flex-start;
-}
-
-.navGroup:last-child {
-    justify-content: flex-end;
 }
 
 .monthDisplay {
@@ -63,14 +49,6 @@
     overflow: visible;
     border-right: 1px solid #ccc;
     border-bottom: 1px solid #ccc;
-}
-
-.selectedCell {
-    background-color: cyan;
-}
-
-.targetedCell {
-    background-color: lightgreen;
 }
 
 .targetRing {

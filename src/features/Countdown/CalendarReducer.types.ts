@@ -19,6 +19,10 @@ export type CalendarState = {
     countHolidays: boolean;
 }
 
+export type NewCalendarDraft =
+    & Omit<CalendarState, "targetDate">
+    & Partial<Pick<CalendarState, "targetDate">>;
+
 export type CalendarAction = 
     | { type: "SET_VIEW_DATE", payload: number }
     | { type: "STEP_VIEW_MONTH", payload: number }
