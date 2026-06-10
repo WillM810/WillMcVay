@@ -95,6 +95,7 @@ export function ControlPanel({ calendarInterface }: ControlPanelProps) {
 
         const icsDataRes = await fetch(`/api/countdown/fetchIcs?icsUrl=${uiState.icsUrl}`);
         const icsData = await icsDataRes.json() as {
+            tzOffset: number;
             events: {
                 label: string;
                 start: number;
@@ -102,9 +103,10 @@ export function ControlPanel({ calendarInterface }: ControlPanelProps) {
                 uid: string;
             }[]
         };
-        const events = icsData.events;
+        const { events, tzOffset } = icsData;
+        const tzOffsetMs = (new Date().getTimezoneOffset() - tzOffset) * 60_000
         const schoolHolidays = events.filter(e => e.label.toLowerCase().includes("closed"))
-            .map(e => ({ id: e.uid, label: e.label, dates: [ e.start, e.end ], isSchoolDay: true, isShared: false }));
+            .map(e => ({ id: e.uid, label: e.label, dates: [ e.start+tzOffsetMs, e.end+tzOffsetMs ], isSchoolDay: true, isShared: false }));
         schoolHolidays.forEach(e => calendarInterface.dispatch.calendarDispatch({ type: "ADD_HOLIDAY", payload: e as Holiday }))
         calendarInterface.dispatch.uiDispatch({ type: "toggleIcsUrl" });
     }
