@@ -50,6 +50,6 @@ export async function GET(request: NextRequest) {
         }
 
         return { ...d, events: [ ...d.events, singleEvent ] };
-    }, { events: [] } as any);
+    }, { events: [], tzOffset: new Date().getTimezoneOffset() } as any);
     return NextResponse.json(allEvents);
 }
