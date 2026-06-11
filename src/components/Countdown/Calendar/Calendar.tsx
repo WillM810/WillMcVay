@@ -7,6 +7,7 @@ import { ChangeEvent } from "react";
 import { CalendarCell, CalendarProps } from "./Calendar.types";
 
 import styles from "./Calendar.module.css";
+import { ImportedHoliday } from "@/features/Countdown/CalendarReducer.types";
 
 export function Calendar({ calendarInterface, countdownArray }: CalendarProps) {
     const calendarState = calendarInterface.state.calendarState;
@@ -143,7 +144,14 @@ export function Calendar({ calendarInterface, countdownArray }: CalendarProps) {
                                     .filter(h =>
                                         (h.dates.length === 1 && h.dates[0] === c.date) ||
                                         (h.dates.length === 2 && [...h.dates, c.date].sort()[1] === c.date)
-                                    )?.map(h => (<div className={clsx(!h.isSchoolDay ? "italic" : "font-bold")} key={h.id}>{h.label}</div>))
+                                    )?.map(h => (
+                                        <div
+                                            className={clsx(!h.isSchoolDay ? "italic" : "font-bold")}
+                                            key={`${(h as ImportedHoliday).sourceId ?? 'USER'}|${h.id}`}
+                                        >
+                                            {h.label}
+                                        </div>
+                                    ))
                             }
                         </div>
                     </div>

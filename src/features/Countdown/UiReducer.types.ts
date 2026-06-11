@@ -9,6 +9,7 @@ export type CalendarStateUI = {
     isEditDatesDirty: boolean;
     isShowIcsUrl: boolean;
     icsUrl: string;
+    selectedSourceId: string;
 };
 
 export type CalendarActionUI =
@@ -20,5 +21,6 @@ export type CalendarActionUI =
     | { type: "toggleEdit" }
     | { type: "toggleIcsUrl" }
     | { type: "onIcsUrlChange", payload: string }
+    | { type: "selectSource", id: string }
     | { type: "resetForm" }
     | { type: "setTargetMode", payload: boolean };

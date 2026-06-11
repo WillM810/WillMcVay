@@ -6,6 +6,29 @@ export type Holiday = {
     isShared: boolean;
 }
 
+export type ImportedHoliday = Holiday & {
+    sourceId: string;
+    keep: boolean;
+    hasChange: boolean;
+    hasConflictingChange: boolean;
+};
+
+export type ICSImportSource = {
+    id: string;
+    name: string;
+    url: string;
+    importedAt: number;
+    importSummary: {
+        added: number;
+        ignored: number;
+        retained: number;
+        updated: number;
+        overwritten: number;
+        conflictsPending: number;
+    };
+    conflictsPending: [ ImportedHoliday, ImportedHoliday ][];
+}
+
 export type CalendarState = {
     id: string;
     title: string;
@@ -13,10 +36,12 @@ export type CalendarState = {
     targetDate: number;
     viewDate: number;
 
-    holidays: Holiday[];
+    holidays: (Holiday | ImportedHoliday)[];
 
     countWeekends: boolean;
     countHolidays: boolean;
+
+    importedSources: ICSImportSource[];
 }
 
 export type NewCalendarDraft =
@@ -33,8 +58,12 @@ export type CalendarAction =
     | { type: "ADD_HOLIDAY", payload: Holiday }
     | { type: "REMOVE_HOLIDAY", payload: string }
     | { type: "UPDATE_HOLIDAY", payload: Holiday }
+    | { type: "TOGGLE_LOCK_HOLIDAY", id: string }
     
     | { type: "TOGGLE_WEEKENDS" }
     | { type: "TOGGLE_HOLIDAYS" }
     
-    | { type: "HYDRATE", payload: CalendarState };
+    | { type: "HYDRATE", payload: CalendarState }
+
+    | { type: "UPDATE_SOURCE", payload: ICSImportSource }
+    | { type: "REMOVE_SOURCE", id: string };

@@ -13,6 +13,7 @@ export const initialUiState: CalendarStateUI = {
     isEditDatesDirty: false,
     isShowIcsUrl: false,
     icsUrl: "",
+    selectedSourceId: "",
 };
 
 export function uiReducerFactory(calendarStateRef: RefObject<CalendarState | NewCalendarDraft>) {
@@ -77,14 +78,6 @@ export function uiReducerFactory(calendarStateRef: RefObject<CalendarState | New
 
                 if (index) return { ...state, selectedDates: [ state.selectedDates[0], newDate ] };
                 else return { ...state, selectedDates: [ newDate, state.selectedDates[1] ] };
-                // state.selectedDates[index] = newDate;
-                // const selectedDates = [ ...state.selectedDates ];
-                // // const selectedDates = index ?
-                // //     (state.selectedDates[0] < newDate ? [state.selectedDates[0], newDate] : [newDate, state.selectedDates[0]]) :
-                // //     (state.selectedDates[1] > newDate ? [newDate, state.selectedDates[1]] : [state.selectedDates[1], newDate]);
-                // if (selectedDates[0] === selectedDates[1] && commit) selectedDates.pop();
-
-                // return { ...state, selectedDates };
             }
             case "showHoliday": {
                 if (!action.payload) return { ...state, pendingLabel: state.lastPendingLabel, isSchoolHoliday: true, editHolidaySelection: "" };
@@ -123,6 +116,9 @@ export function uiReducerFactory(calendarStateRef: RefObject<CalendarState | New
             }
             case "onIcsUrlChange": {
                 return { ...state, icsUrl: action.payload };
+            }
+            case "selectSource": {
+                return { ...state, selectedSourceId: action.id };
             }
             case "setTargetMode": {
                 const pendingLabel = action.payload ?
