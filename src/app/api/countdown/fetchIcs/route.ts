@@ -36,8 +36,8 @@ export async function GET(request: NextRequest) {
             parseInt(d.slice(0, 4)),
             parseInt(d.slice(4, 6)) - 1,
             parseInt(d.slice(6, 8)) - (d.length > 8 || !exclude ? 0 : 1),
-            d.length > 8 ? parseInt(d.slice(9, 11)) : 0,
-            d.length > 8 ? parseInt(d.slice(11, 13)) : 0
+            // d.length > 8 ? parseInt(d.slice(9, 11)) : 0,
+            // d.length > 8 ? parseInt(d.slice(11, 13)) : 0
         );
 
         const singleEvent = {} as any;
